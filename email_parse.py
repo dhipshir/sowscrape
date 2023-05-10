@@ -13,7 +13,7 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
     ############### Login to Mailbox ######################
     print("Logging into mailbox...")
     resp_code, response = imap_ssl.login(st.secrets["log"], st.secrets["pw"])
-  
+    
     print("Response Code : {}".format(resp_code))
     print("Response      : {}\n".format(response[0].decode()))
 
@@ -27,7 +27,7 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
 
     print("Total Mail IDs : {}\n".format(len(mail_ids)))
 
-    for mail_id in mail_ids[-2:]:
+    for mail_id in mail_ids[:]:
         print("================== Start of Mail [{}] ====================".format(mail_id))
 
         resp_code, mail_data = imap_ssl.fetch(mail_id, '(RFC822)') ## Fetch mail data.
