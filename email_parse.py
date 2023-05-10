@@ -43,22 +43,22 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
 
         print("================== End of Mail [{}] ====================\n".format(mail_id))
 
-        '''
-        print("From       : {}".format(message.get("From")))
-        print("To         : {}".format(message.get("To")))
-        print("Bcc        : {}".format(message.get("Bcc")))
-        print("Date       : {}".format(message.get("Date")))
-        print("Subject    : {}".format(message.get("Subject")))
+        
+        #print("From       : {}".format(message.get("From")))
+        #print("To         : {}".format(message.get("To")))
+        #print("Bcc        : {}".format(message.get("Bcc")))
+        #print("Date       : {}".format(message.get("Date")))
+        #print("Subject    : {}".format(message.get("Subject")))
 
-        print("Body : ")
-        for part in message.walk():
-            print("Content type: " + part.get_content_type())
-            if part.get_content_type() == "text/plain": ## Only Printing Text of mail. It can have attachements
-                body_lines = part.as_string().split("\n")
-                print("\n".join(body_lines[:len(body_lines)])) ### Print full message
-                print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        #print("Body : ")
+        #for part in message.walk():
+            #print("Content type: " + part.get_content_type())
+            #if part.get_content_type() == "text/plain": ## Only Printing Text of mail. It can have attachements
+                #body_lines = part.as_string().split("\n")
+                #print("\n".join(body_lines[:len(body_lines)])) ### Print full message
+                #print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
         #print("================== End of Mail [{}] ====================\n".format(mail_id))
-        '''
+        
 #imap_ssl.close()
 #imap_ssl.logout()
 #function stubs
