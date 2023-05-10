@@ -37,7 +37,7 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
         print("Subject    : {}".format(message.get("Subject")))
         for part in message.walk():
             print("CONTENT TYPE: " + part.get_content_type())
-        message.get_body()
+        #message.get_body()
 
 
 
