@@ -3,7 +3,8 @@ import email, os, sys, re
 #import BeautifulSoup
   
 #<instant-updates@mail.zillow.com>
-
+LOG = ""
+PW = ""
 #was required to generate this app specific password to use with gmail IMAP
 #Gmail 2-step verification -> bottom of page: App passwords
 with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
@@ -11,7 +12,7 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
 
     ############### Login to Mailbox ######################
     print("Logging into mailbox...")
-    resp_code, response = imap_ssl.login(log, pw)
+    resp_code, response = imap_ssl.login(LOG, PW)
   
     print("Response Code : {}".format(resp_code))
     print("Response      : {}\n".format(response[0].decode()))
