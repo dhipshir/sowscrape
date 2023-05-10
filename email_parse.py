@@ -32,7 +32,18 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
 
         resp_code, mail_data = imap_ssl.fetch(mail_id, '(RFC822)') ## Fetch mail data.
 
+        
         message = email.message_from_bytes(mail_data[0][1]) ## Construct Message from mail data
+        print("Subject    : {}".format(message.get("Subject")))
+        for part in message.walk():
+            print("CONTENT TYPE: " + part.get_content_type())
+        message.get_body()
+
+
+
+        print("================== End of Mail [{}] ====================\n".format(mail_id))
+
+        '''
         print("From       : {}".format(message.get("From")))
         print("To         : {}".format(message.get("To")))
         print("Bcc        : {}".format(message.get("Bcc")))
@@ -44,10 +55,10 @@ with imaplib.IMAP4_SSL(host="imap.gmail.com", port=993) as imap_ssl:
             print("Content type: " + part.get_content_type())
             if part.get_content_type() == "text/plain": ## Only Printing Text of mail. It can have attachements
                 body_lines = part.as_string().split("\n")
-                print("\n".join(body_lines[:len(body_lines)])) ### Print first few lines of message
+                print("\n".join(body_lines[:len(body_lines)])) ### Print full message
                 print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-        print("================== End of Mail [{}] ====================\n".format(mail_id))
-
+        #print("================== End of Mail [{}] ====================\n".format(mail_id))
+        '''
 #imap_ssl.close()
 #imap_ssl.logout()
 #function stubs
